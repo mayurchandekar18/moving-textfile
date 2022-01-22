@@ -1,0 +1,103 @@
+
+import os
+import shutil
+import time
+import threading
+from threading import *
+from threading import Thread
+from time import sleep
+
+
+#creating a folder
+path1 ='F:\Files\Processing'
+
+try:
+ os.makedirs(path1)
+ print('folder created')
+    
+except FileExistsError:
+ print('File Already exist')
+
+path2='F:\files\Queue'
+try:
+ os.makedirs(path2)
+ print('folder created')
+    
+except FileExistsError:
+ print('File Already exist')
+
+path3='F:\files\Process'
+
+try:
+ os.makedirs(path3)
+ print('folder created')
+    
+except FileExistsError:
+ print('File Already exist')
+
+
+
+path1 ='F:\Files\Processing'
+
+try:
+ os.makedirs(path1)
+ print('folder created')
+    
+except FileExistsError:
+ print('File Already exist')
+
+
+path2='F:\Files\Queue'
+try:
+ os.makedirs(path2)
+ print('folder created')
+    
+except FileExistsError:
+ print('File Already exist')
+
+path3='F:\Files\Process'
+
+try:
+ os.makedirs(path3)
+ print('folder created')
+    
+except FileExistsError:
+ print('File Already exist')
+
+
+
+ class first(Thread):
+    def run(self):
+                for i in range(10):
+                 text=open('F:\\Files\\Processing\\new.txt','w+')
+                 text.close()
+                 sleep(2)
+
+class second(Thread):
+     def run(self):
+                 #for i in range(10):
+                 shutil.move ('F:\\Files\\Processing\\new.txt','F:\\Files\\Queue\\new.txt')
+                 sleep(0.1)
+
+class third(Thread):
+     def run(self):
+                 #for i in range(10):
+                 shutil.move ('F:\\Files\\Queue\\new.txt','F:\\Files\\Process\\new.txt')
+                 sleep(0.1)
+
+f1=first()
+f2=second()
+f3=third()
+
+f1.start()
+f1=threading.Timer(1,first)
+sleep(2)
+f2.start()
+f2=threading.Timer(1,second)
+sleep(2)
+f3.start()
+f3=threading.Timer(1,third)
+sleep(2) 
+
+
+
